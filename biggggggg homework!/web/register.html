@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>注册 - 校园二手书交易管理系统</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <main class="auth-page">
+    <section class="auth-box">
+      <div class="panel-header">
+        <h1 class="auth-title">校园二手书交易管理系统</h1>
+        <p class="auth-subtitle">用户注册</p>
+      </div>
+      <div class="panel-body">
+        <form id="registerForm" class="form-grid" style="grid-template-columns:1fr">
+          <label>学号
+            <input name="student_id" required autocomplete="username">
+          </label>
+          <label>姓名
+            <input name="name" required autocomplete="name">
+          </label>
+          <label>密码
+            <input name="password" type="password" required minlength="6" autocomplete="new-password">
+          </label>
+          <label>电话
+            <input name="phone" autocomplete="tel">
+          </label>
+          <label>邮箱
+            <input name="email" type="email" autocomplete="email">
+          </label>
+          <div class="button-row">
+            <button type="submit">注册</button>
+            <a class="button secondary" href="/login.html">返回登录</a>
+          </div>
+          <p id="authMessage" class="message"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>

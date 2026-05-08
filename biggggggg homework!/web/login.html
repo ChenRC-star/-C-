@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>登录 - 校园二手书交易管理系统</title>
+  <style>
+    /* 核心背景与布局样式 */
+    .auth-page {
+      /* 请将下面的 URL 替换为你实际的背景图地址 */
+      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                  url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=2070') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: "Microsoft YaHei", sans-serif;
+    }
+
+    /* 欢迎语样式：位于背景图上，登录框上方 */
+    .welcome-hero {
+      text-align: center;
+      color: white;
+      margin-bottom: 2.5rem;
+      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* 文字阴影确保可读性 */
+      animation: fadeInDown 1s ease-out;
+    }
+
+    .welcome-title {
+      font-size: 3rem;
+      margin: 0;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .welcome-desc {
+      font-size: 1.25rem;
+      margin-top: 10px;
+      opacity: 0.9;
+    }
+
+    /* 登录框样式优化：半透明毛玻璃效果 */
+    .auth-box {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    /* 保持你原有结构中的样式名，补充基础美化 */
+    .panel-header { text-align: center; margin-bottom: 30px; }
+    .auth-title { color: #333; font-size: 1.5rem; margin-bottom: 8px; }
+    .auth-subtitle { color: #666; font-size: 0.9rem; }
+    .form-grid { display: flex; flex-direction: column; gap: 20px; }
+    label { display: flex; flex-direction: column; gap: 8px; font-weight: bold; }
+    input { padding: 12px; border: 1px solid #ddd; border-radius: 6px; }
+    .button-row { display: flex; gap: 10px; margin-top: 10px; }
+    button, .button { flex: 1; padding: 12px; border-radius: 6px; text-align: center; text-decoration: none; cursor: pointer; border: none; }
+    button { background: #4a90e2; color: white; font-weight: bold; }
+    .button.secondary { background: #eee; color: #333; }
+
+    /* 简单的入场动画 */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <main class="auth-page">
+    <div class="welcome-hero">
+      <h2 class="welcome-title">欢迎使用</h2>
+      <p class="welcome-desc">让知识流动起来</p>
+    </div>
+
+    <section class="auth-box">
+      <div class="panel-header">
+        <h1 class="auth-title">校园二手书交易管理系统</h1>
+        <p class="auth-subtitle">用户登录</p>
+      </div>
+      <div class="panel-body">
+        <form id="loginForm" class="form-grid">
+          <label>学号
+            <input name="student_id" autocomplete="username" required value="20260001">
+          </label>
+          <label>密码
+            <input name="password" type="password" autocomplete="current-password" required value="123456">
+          </label>
+          <div class="button-row">
+            <button type="submit">登录</button>
+            <a class="button secondary" href="/register.html">注册账号</a>
+          </div>
+          <p id="authMessage" class="message"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>

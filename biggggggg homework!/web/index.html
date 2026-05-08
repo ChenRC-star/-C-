@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>校园二手书交易管理系统</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">校园二手书交易管理系统</div>
+    <div class="top-actions">
+      <span id="currentUser" class="muted"></span>
+      <button id="logoutBtn" class="secondary">退出</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel">
+      <div class="panel-header">
+        <h2 class="panel-title">图书查询</h2>
+        <p id="bookMessage" class="message"></p>
+      </div>
+      <div class="panel-body">
+        <form id="filterForm" class="filters">
+          <label>书名
+            <input name="keyword" placeholder="关键词">
+          </label>
+          <label>作者
+            <input name="author" placeholder="作者名">
+          </label>
+          <label>ISBN
+            <input name="isbn" placeholder="ISBN 编号">
+          </label>
+          <label>分类
+            <select name="category">
+              <option value="">全部</option>
+              <option>教材</option>
+              <option>计算机</option>
+              <option>考研</option>
+              <option>外语</option>
+              <option>经管</option>
+              <option>文学</option>
+              <option>课外读物</option>
+              <option>工具书</option>
+            </select>
+          </label>
+          <label>状态
+            <select name="status">
+              <option value="">全部</option>
+              <option>在售</option>
+              <option>已售</option>
+              <option>已下架</option>
+            </select>
+          </label>
+          <label>最高价
+            <input name="max_price" type="number" min="0" step="0.01">
+          </label>
+          <div class="button-row">
+            <button type="submit">查询</button>
+            <button type="button" id="resetFilters" class="secondary">重置</button>
+          </div>
+        </form>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>编号</th>
+              <th>书名</th>
+              <th>ISBN</th>
+              <th>作者</th>
+              <th>分类</th>
+              <th>价格</th>
+              <th>卖家</th>
+              <th>状态</th>
+              <th>发布时间</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="bookRows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="grid">
+      <section class="panel">
+        <div class="panel-header">
+          <h2 class="panel-title">发布图书</h2>
+        </div>
+        <div class="panel-body">
+          <form id="publishForm" class="form-grid">
+            <label>书名
+              <input name="title" required>
+            </label>
+            <label>ISBN
+              <input name="isbn">
+            </label>
+            <label>作者
+              <input name="author">
+            </label>
+            <label>出版社
+              <input name="publisher">
+            </label>
+            <label>分类
+              <select name="category">
+                <option>教材</option>
+                <option>计算机</option>
+                <option>考研</option>
+                <option>外语</option>
+                <option>经管</option>
+                <option>文学</option>
+                <option>课外读物</option>
+                <option>工具书</option>
+              </select>
+            </label>
+            <label>新旧程度
+              <input name="condition" value="八成新">
+            </label>
+            <label>售价
+              <input name="price" type="number" min="0" step="0.01" required>
+            </label>
+            <label>联系方式
+              <input name="seller_contact">
+            </label>
+            <div class="button-row">
+              <button type="submit">发布</button>
+              <p id="publishMessage" class="message"></p>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <aside>
+        <section class="panel">
+          <div class="panel-header">
+            <h2 class="panel-title">统计</h2>
+          </div>
+          <div class="panel-body">
+            <div class="stats">
+              <div class="stat"><span>用户</span><strong id="statUsers">0</strong></div>
+              <div class="stat"><span>图书</span><strong id="statBooks">0</strong></div>
+              <div class="stat"><span>在售</span><strong id="statOnSale">0</strong></div>
+              <div class="stat"><span>已售</span><strong id="statSold">0</strong></div>
+              <div class="stat"><span>成交额</span><strong id="statAmount">0.00</strong></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2 class="panel-title">分类成交</h2>
+          </div>
+          <div class="panel-body">
+            <div id="categoryList" class="category-list"></div>
+          </div>
+        </section>
+      </aside>
+    </div>
+
+    <section class="panel">
+      <div class="panel-header">
+        <h2 class="panel-title">我的购买记录</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>交易号</th>
+              <th>图书号</th>
+              <th>金额</th>
+              <th>时间</th>
+              <th>状态</th>
+            </tr>
+          </thead>
+          <tbody id="tradeRows"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/books.js"></script>
+</body>
+</html>
